@@ -112,3 +112,18 @@ and `refresh` commands to circumvent this.
 ## `The name org.freedesktop.secrets was not provided by any .service files (org.freedesktop.DBus.Error.ServiceUnknown)))`
 
 This is an error specific to linux and tells you that you currently don't have any secret manager implementing the Freedesktop Secret Service set up. Usually, a keyring app such as GNOME-Keyring or another tool is pre-installed. Open that up and configure your master password and the default vault for your secrets and retry running saml2aws-auto. [Another link to what apps provide this API](https://specifications.freedesktop.org/secret-service/)
+
+## NOTES
+
+installed geiger to get a view of the dependencies
+```
+cargo install cargo-geiger
+Navigate to the same directory as the Cargo.toml you want to analyze.
+cargo geiger
+```
+
+the reqwest library has a dependency to hyper and then to 'cc' which i think is what is blowing up on aws docker images.
+
+an alternative http library is actix, so looking into thatre
+
+```https://actix.rs/actix-web/actix_web/client/index.html```
